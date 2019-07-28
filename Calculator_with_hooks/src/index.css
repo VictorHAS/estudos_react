@@ -1,0 +1,13 @@
+* {
+  font-family: "Roboto", monospace;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(to right, rgb(0, 159, 255), rgb(236, 47, 75));
+}
