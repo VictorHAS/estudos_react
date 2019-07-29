@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Contador from './components/Calculator';
+import Calculadora from './components/Calculator';
 
 const App = () => (
   <div>
     <h1>Calculadora</h1>
-    <Contador />
+    <Calculadora />
   </div>
 );
 
