@@ -1,0 +1,34 @@
+.container {
+  display: grid;
+  grid-template-areas:
+    "search-bar search-bar search-bar search-bar"
+    "video-player video-player video-player video-list"
+    "video-player video-player video-player video-list";
+}
+
+.search-bar {
+  grid-area: search-bar;
+  background: red;
+}
+
+.video-player {
+  grid-area: video-player;
+  background: #f0e68c;
+}
+
+.video-list {
+  grid-area: video-list;
+  background: #fffacd;
+  padding: 15px;
+}
+
+.video-titulo {
+  font-weight: 600;
+  color: #468284;
+  padding: 10px;
+}
+
+.video-descricao {
+  padding: 10px;
+  color: #0000cd;
+}
