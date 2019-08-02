@@ -3,6 +3,17 @@
   font-weight: bold;
   text-align: center;
 }
+
+.text-left {
+  text-align: left;
+}
+
 .header {
   padding: 0px 20px;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+  color: inherit;
 }
