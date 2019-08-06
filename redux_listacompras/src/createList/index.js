@@ -1,53 +1,58 @@
 import React from "react";
 
-// Material Component
-import { Typography, Checkbox } from "@material-ui/core";
-
-// FontAwesome Icons
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
+// Redux && Actions
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { Creators as ListActions } from "../store/actions/list";
 
 // Custom component
 import Form from "./Form";
-import CustomCard from "../common/CustomCard";
+import ListItem from "./ListItem";
+import NewItem from "./NewItem";
 
 // Css
 import "./List.css";
 
-const createList = () => (
-  <div className="page-container">
-    <Form />
+const createList = props => {
+  function addProduct(product, list) {
+    props.addProduct(product, list);
+  }
 
-    <div className="list-items-container">
-      <CustomCard
-        link="#"
-        image="http://s2.glbimg.com/P6Nn4AXYPq-K1Xek4cCKyONYYyA=/e.glbimg.com/og/ed/f/original/2014/01/15/cafe.jpg"
-        containerClass="list-item"
-        footer={<ListItemFooter />}
-      >
-        <div>
-          <div className="list-item-header">
-            <Typography variant="subtitle1" component="h2">
-              Café
-            </Typography>
-            <Checkbox />
-          </div>
-          <Typography component="p">1 Unidade</Typography>
-          <Typography component="p">R$ 10.00</Typography>
-        </div>
-      </CustomCard>
+  return (
+    <div className="page-container">
+      <Form
+        addProduct={addProduct}
+        updateProduct={props.updateProduct}
+        url={props.match.params.action}
+      />
+
+      <div className="list-items-container">
+        {props.list.items.map(item => (
+          <ListItem
+            list={props.list.list}
+            item={item}
+            toggleProduct={props.toggleProduct}
+            key={item.id}
+            deleteProduct={props.deleteProduct}
+          />
+        ))}
+
+        {props.match.params.action === "edicao" && (
+          <NewItem list={props.list.list} />
+        )}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
-const ListItemFooter = () => (
-  <div className="list-card-footer">
-    <div className="list-card-footer-actions">
-      <FontAwesomeIcon icon={faPen} color="#00b0ff" size="1x" />
-      <FontAwesomeIcon icon={faTrash} color="#e91e63" size="1x" />
-    </div>
-    <p>Total: R$ 50</p>
-  </div>
-);
+const mapStateToProps = state => ({
+  list: state.list
+});
 
-export default createList;
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(ListActions, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(createList);

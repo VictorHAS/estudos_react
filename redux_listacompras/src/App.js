@@ -1,6 +1,10 @@
 import React from "react";
 import "./App.css";
 
+// Redux && Store
+import { Provider } from "react-redux";
+import store from "./store";
+
 // Material Services
 import { createMuiTheme } from "@material-ui/core/styles";
 import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
@@ -27,17 +31,19 @@ const theme = createMuiTheme({
 
 const App = () => {
   return (
-    <MuiThemeProvider theme={theme}>
-      <Router>
-        <>
-          <Header />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/lista" component={CreateList} />
-          </Switch>
-        </>
-      </Router>
-    </MuiThemeProvider>
+    <Provider store={store}>
+      <MuiThemeProvider theme={theme}>
+        <Router>
+          <>
+            <Header />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/lista/:action" component={CreateList} />
+            </Switch>
+          </>
+        </Router>
+      </MuiThemeProvider>
+    </Provider>
   );
 };
 
