@@ -1,14 +1,20 @@
 import axios from "axios";
 
+// Pegue as credenciais aqui => https://developers.google.com/custom-search/v1/introduction
+const keys = {
+  key: "Chave key do google api",
+  cx: "CX gerado pela engina de search image"
+};
+
 export const services = {
   getImages: product => {
     const params = {
-      key: "AIzaSyCLqhyfngNs9cPTokHkzLRi0ouN5n2ESSQ",
-      cx: "004852152977252151084%3Azmbhvyqckqa",
-      searchType: "Image",
+      searchType: "image",
       lr: "lang_pt",
-      num: 1,
-      q: product
+      num: "1",
+      q: product,
+      key: keys.key,
+      cx: keys.cx
     };
     return axios
       .get("https://www.googleapis.com/customsearch/v1", { params })

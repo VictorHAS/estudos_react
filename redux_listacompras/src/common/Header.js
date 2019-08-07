@@ -8,7 +8,7 @@ import { AppBar } from "@material-ui/core";
 
 const Header = () => {
   return (
-    <AppBar position="static" color="primary">
+    <AppBar position="static">
       <div className="header">
         <Link to="/">
           <p className="title text-left">Lista de Compras</p>
