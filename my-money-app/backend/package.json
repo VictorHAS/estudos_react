@@ -15,7 +15,7 @@
     "express": "^4.17.1",
     "express-query-int": "^3.0.0",
     "lodash": "^4.17.15",
-    "mongoose": "^5.6.8",
+    "mongoose": "^5.7.5",
     "mongoose-paginate": "^5.0.3",
     "node-restful": "^0.2.6",
     "pm2": "^3.5.1"
